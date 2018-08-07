@@ -1,0 +1,121 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Form Validation</title>
+    <style>
+    body {
+     background: linear-gradient(270deg, #191970, #191970, #3a5fcd, #660066);   
+}
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 100px;
+        }
+        
+        input{
+            height: 50px;
+            width: 300px;
+            background-color:#660066 ;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 3px solid black;
+        }
+        
+        
+        button{
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: transparent; 
+    margin: 19px;
+    border: 3px solid white;
+    padding: 15px;
+    border-radius: 20px;
+        }
+        h2{
+          font-size: 35px;
+    font-weight: bold;
+    color: white;  
+        }
+        label{
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="container">
+<div class="main">
+<form action="#" method="post" name="form_name" id="form_id" class="form_class" >
+<h2>Form Validation</h2>
+    
+<label>Name :</label>
+<input type="text" name="name" id="name" placeholder="Name" />
+    
+<label>Address :</label>
+<input type="text" name="address" id="address" placeholder="type your address" />
+    
+<label>Email Adress:</label>
+<input type="e-mail" name="email" id="email" placeholder="Please enter a valid e-mail address" />
+    
+<label>Password :</label>
+<input type="password" name="password" id="password" placeholder="" />
+    
+<label>Comments :</label>
+<input type="text" name="comments" id="comments" placeholder="comments" />
+ 
+    <button id="send">send</button>
+     <button id="reset">reset</button>
+</form>
+    
+</div>
+</div>
+    <script>
+                document.getElementById("send").addEventListener("click", validation);
+                document.getElementById("reset").addEventListener("click", resetform);
+    function validation(){
+    var name = document.getElementById("name").value;
+    var address= document.getElementById("address").value;
+    var email = document.getElementById("email").value;
+    var password= document.getElementById("password").value;
+    var comments= document.getElementById("comments").value;
+var emailReg = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+var passwordReg = new RegExp("(?=.*\d)(?=.*[a-z])(?=.*[A-Z])");
+
+if( name ==='' || email ==='' || address ==='' || password ==='' || comments ==='' ){
+alert("Please fill all fields!");
+return false;
+}else if(!(email).match(emailReg)){
+alert("Please enter a valid e-mail address");
+return false;
+}
+        else if (!(password).match(passwordReg))
+            {
+                alert("Please enter a valid password");
+
+            }
+        else if (password.length<8)
+            {
+                alert("password must contain 8 caracters");
+
+            }
+    else{
+        alert("good");
+return true;
+}
+}
+    function resetform(){
+        document.getElementById("form_id").reset();
+        alert("all fields are reset");
+
+    }
+    </script>
+</body>
+</html>
